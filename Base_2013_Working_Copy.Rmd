@@ -301,7 +301,20 @@ doaj_seal %>%
 
 # Principal Investigator's BioSketch
 
-About me...
+This field is auto-populated from an ORCID profile using @R-rorcid package.
+
+```{r orcid-bio, echo = FALSE}
+library ('rorcid')
+library('httpuv')
+
+token <- orcid_auth(scope = "/authenticate", reauth = FALSE, redirect_uri = getOption("rorcid.redirect_uri"))
+
+res <- orcid_bio(orcid = "0000-0003-4740-4187")
+bio <- res$'0000-0003-4740-4187'$'content'
+
+```
+
+`r bio`
 
 ****
 
